@@ -21,6 +21,8 @@ task = {}
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    if message.from_user.id not in [105865380,5760267293]:
+        return
     bot.reply_to(message, """\
 Привет, давай рубить бабосики на перезаливах!\
 """, reply_markup=main_keyboard())
@@ -204,7 +206,7 @@ def run_scheduler():
 
 
 if __name__ == '__main__':
-    schedule.every(2).hours.do(proccess)
+    schedule.every(1).hours.do(proccess)
     scheduler_thread = threading.Thread(target=run_scheduler)
     scheduler_thread.daemon = True
     scheduler_thread.start()

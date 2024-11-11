@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 def get_tiktok_videos_v1(username):
     cookies = get_tiktok_cookies(username)
     logger.debug('starting get videos links.. [tiktok]')
-    
+    msToken=config.msToken
     videos = []
     async def get():
         async with TikTokApi() as api:
@@ -98,6 +98,7 @@ def proccess():
             last_video_time = tiktok_channel['last_video_time']
 
             try:
+                print(f'get tiktok links for {tiktok_account}')
                 videos = get_tiktok_videos_v1(tiktok_account)
             except Exception as e:
                 print("can't get videos from tiktok")
