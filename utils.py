@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 def get_tiktok_videos_v1(username):
     cookies = get_tiktok_cookies(username)
+    print(cookies)
     logger.debug('starting get videos links.. [tiktok]')
     msToken=config.msToken
     videos = []
